@@ -1,0 +1,28 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Admin emails. To add another admin, add their email to this list,
+    // separated by commas, e.g. ['a@gmail.com', 'b@gmail.com'].
+    function isScorekeeper() {
+      return request.auth != null
+        && request.auth.token.email in [
+          'adrianliber1998@gmail.com'
+        ];
+    }
+
+    function validPlayer() {
+      let d = request.resource.data;
+      return d.name is string && d.name.size() > 0 && d.name.size() <= 80
+        && d.rounds is list && d.rounds.size() <= 3;
+    }
+
+    // Anyone can see the leaderboard. Only the scorekeeper can change it.
+    match /players/{playerId} {
+      allow read: if true;
+      allow create, update: if isScorekeeper() && validPlayer();
+      allow delete: if isScorekeeper();
+    }
+  }
+}
