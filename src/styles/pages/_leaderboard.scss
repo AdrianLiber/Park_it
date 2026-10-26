@@ -1,0 +1,163 @@
+// The public leaderboard: one framed list of players, best round first.
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+
+.board-card {
+  @include card;
+
+  overflow: hidden;
+}
+
+.board-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+// Green "live" dot before the player count.
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  &::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--good);
+  }
+}
+
+.board {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr) auto;
+  gap: 0.25rem 0.9rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--line);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  @include at-most(small-phone) {
+    grid-template-columns: 2.1rem minmax(0, 1fr) auto;
+    gap: 0.2rem 0.65rem;
+    padding: 0.75rem 0.8rem;
+  }
+}
+
+.rank {
+  @include display-number(1.9rem);
+
+  color: var(--muted);
+  text-align: center;
+
+  @include at-most(small-phone) {
+    font-size: 1.55rem;
+  }
+}
+
+.row.lead {
+  .rank,
+  .sum {
+    color: var(--flag);
+  }
+}
+
+.row.podium .rank {
+  color: var(--ink);
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
+.tries {
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.empty {
+  padding: 2.25rem 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: center;
+
+  strong {
+    color: var(--ink);
+    font-size: 1.05rem;
+  }
+}
+
+// "Not thrown yet" list under the board.
+.waiting {
+  @include card;
+
+  summary {
+    cursor: pointer;
+    padding: 0.85rem 1rem;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 0.4rem 1rem;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+  }
+
+  li span:last-child {
+    @include mono-caption;
+
+    white-space: nowrap;
+  }
+}
+
+.foot {
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  a {
+    color: var(--muted);
+  }
+}

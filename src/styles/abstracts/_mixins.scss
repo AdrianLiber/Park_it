@@ -1,0 +1,29 @@
+/// Bordered card on the page surface.
+@mixin card($radius: 8px) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: $radius;
+}
+
+/// Big condensed number (ranks, totals).
+@mixin display-number($size, $line-height: 1) {
+  font-family: var(--display);
+  font-size: $size;
+  font-weight: 700;
+  line-height: $line-height;
+  font-variant-numeric: tabular-nums;
+}
+
+/// Small monospace caption (PDGA numbers, hints).
+@mixin mono-caption($size: 0.78rem, $weight: 500) {
+  font-family: var(--mono);
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+/// Keeps content clear of the phone notch / home bar.
+@function safe-area($side, $minimum) {
+  @return max(#{$minimum}, env(safe-area-inset-#{$side}, 0px));
+}

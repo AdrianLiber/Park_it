@@ -1,0 +1,61 @@
+.masthead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.eyebrow {
+  font: 600 0.8rem/1.2 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0;
+  font: 700 clamp(2.75rem, 11vw, 4.5rem) / 0.9 var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  text-wrap: balance;
+}
+
+.pennant {
+  width: 0.55em;
+  height: 0.8em;
+  flex: none;
+  margin-bottom: 0.06em;
+
+  path {
+    fill: var(--flag);
+  }
+
+  line {
+    stroke: var(--ink);
+    stroke-width: 6;
+  }
+}
+
+.rules {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+
+  li {
+    display: flex;
+    gap: 0.35rem;
+    align-items: baseline;
+  }
+
+  b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+}

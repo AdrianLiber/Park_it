@@ -1,0 +1,39 @@
+@use "sass:map";
+
+// Screen widths where the layout changes.
+// Keep "tablet" in sync with PHONE_LAYOUT_QUERY in scripts/admin/player-detail.js.
+$breakpoints: (
+  small-phone: 420px,
+  phone: 560px,
+  tablet: 860px,
+  desktop: 1000px,
+);
+
+@function breakpoint($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "Unknown breakpoint `#{$name}`. Use one of: #{map.keys($breakpoints)}";
+  }
+
+  @return map.get($breakpoints, $name);
+}
+
+/// Screens this wide or narrower.
+@mixin at-most($name) {
+  @media (width <= breakpoint($name)) {
+    @content;
+  }
+}
+
+/// Screens narrower than this.
+@mixin below($name) {
+  @media (width < breakpoint($name)) {
+    @content;
+  }
+}
+
+/// Screens this wide or wider.
+@mixin from($name) {
+  @media (width >= breakpoint($name)) {
+    @content;
+  }
+}

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Park it!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Creepster&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    />
+    <script type="module" src="./scripts/leaderboard/index.js"></script>
+  </head>
+  <body class="spooky">
+    <main class="wrap">
+      <div class="langbar">
+        <div class="lang" role="group" aria-label="Language / Jezik">
+          <button type="button" data-lang="hr" aria-pressed="false">HR</button>
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        </div>
+      </div>
+
+      <div class="top">
+        <header class="masthead">
+          <div class="bats" aria-hidden="true">
+            <svg class="bat bat-front" viewBox="0 0 64 32">
+              <path
+                d="M32 10c-2 0-3 2-3 2l-1-4-1 5c-4-6-12-8-18-6 4 2 6 5 6 9-3-2-7-2-11 0 6 1 10 4 12 8 3-3 7-4 10-2 2-2 4-3 6-3s4 1 6 3c3-2 7-1 10 2 2-4 6-7 12-8-4-2-8-2-11 0 0-4 2-7 6-9-6-2-14 0-18 6l-1-5-1 4s-1-2-3-2z"
+              ></path>
+            </svg>
+            <svg class="bat bat-middle" viewBox="0 0 64 32">
+              <path
+                d="M32 10c-2 0-3 2-3 2l-1-4-1 5c-4-6-12-8-18-6 4 2 6 5 6 9-3-2-7-2-11 0 6 1 10 4 12 8 3-3 7-4 10-2 2-2 4-3 6-3s4 1 6 3c3-2 7-1 10 2 2-4 6-7 12-8-4-2-8-2-11 0 0-4 2-7 6-9-6-2-14 0-18 6l-1-5-1 4s-1-2-3-2z"
+              ></path>
+            </svg>
+            <svg class="bat bat-back" viewBox="0 0 64 32">
+              <path
+                d="M32 10c-2 0-3 2-3 2l-1-4-1 5c-4-6-12-8-18-6 4 2 6 5 6 9-3-2-7-2-11 0 6 1 10 4 12 8 3-3 7-4 10-2 2-2 4-3 6-3s4 1 6 3c3-2 7-1 10 2 2-4 6-7 12-8-4-2-8-2-11 0 0-4 2-7 6-9-6-2-14 0-18 6l-1-5-1 4s-1-2-3-2z"
+              ></path>
+            </svg>
+          </div>
+          <span class="eyebrow" data-i18n="eyebrow"
+            >Drava Forester 2026 · Varaždin · Halloween edition</span
+          >
+          <h1>
+            <svg class="pennant" viewBox="0 0 40 60" aria-hidden="true">
+              <line x1="4" y1="0" x2="4" y2="60"></line>
+              <path d="M7 3 L38 14 L7 25 Z"></path>
+            </svg>
+            Park it!
+          </h1>
+          <ul class="rules" data-i18n-aria="rulesLabel" aria-label="Rules">
+            <li data-i18n-html="ruleDiscs"><b>3 discs</b> per round</li>
+            <li data-i18n-html="ruleRounds"><b>Up to 3</b> rounds</li>
+            <li data-i18n-html="ruleMiss">Outside 3 m <b>= 300</b></li>
+            <li data-i18n-html="ruleUnits">Distances in <b>cm</b></li>
+            <li data-i18n-html="ruleWinner"><b>Lowest</b> total wins</li>
+          </ul>
+        </header>
+        <img
+          id="poster"
+          class="poster"
+          src="./assets/images/halloween-poster.jpg"
+          width="800"
+          height="800"
+          data-i18n-alt="posterAlt"
+          alt="Drava Forester 14th annual disc golf party poster: a pumpkin-headed player throwing a disc at a basket under a full moon, Varaždin, 30 Oct – 1 Nov 2026"
+        />
+      </div>
+
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5"></circle>
+          <line x1="15.5" y1="15.5" x2="21" y2="21"></line>
+        </svg>
+        <input
+          id="search"
+          type="search"
+          placeholder="Find your name or PDGA number"
+          data-i18n-placeholder="searchPlaceholder"
+          data-i18n-aria="searchLabel"
+          autocomplete="off"
+          aria-label="Find a player"
+        />
+      </div>
+
+      <section class="board-card" aria-labelledby="boardTitle">
+        <div class="board-head">
+          <span id="boardTitle" data-i18n="boardTitle">Best round per player</span>
+          <span id="boardCount" class="live">Connecting…</span>
+        </div>
+        <ol id="board" class="board"></ol>
+        <div id="boardEmpty" class="empty">
+          <strong>Loading the leaderboard…</strong>
+        </div>
+      </section>
+
+      <details id="waiting" class="waiting" hidden>
+        <summary id="waitingTitle">Not thrown yet</summary>
+        <ul id="waitingList"></ul>
+      </details>
+
+      <footer class="foot">
+        <span data-i18n="footer"
+          >Each player's best of up to 3 rounds counts. Ties go to the closest single disc.</span
+        >
+        <a href="./admin.html" data-i18n="scorekeeper">Scorekeeper</a>
+      </footer>
+    </main>
+  </body>
+</html>

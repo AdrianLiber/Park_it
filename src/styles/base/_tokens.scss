@@ -1,0 +1,38 @@
+// Colours and fonts as CSS custom properties, so the dark mode and the
+// Halloween theme can swap them at runtime.
+
+:root {
+  --ground: #eef1ec; // fairway grey-green
+  --surface: #fbfcfa;
+  --ink: #16201a;
+  --muted: #5b6960;
+  --line: #d3dacf;
+  --flag: #d9480f; // basket-flag safety orange
+  --flag-ink: #fff;
+  --flag-soft: #fbe3d6;
+  --good: #2f7d4f;
+  --bad: #b42318;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, consolas, monospace;
+  --radius: 6px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #0f1411;
+    --surface: #171e19;
+    --ink: #e6ece7;
+    --muted: #92a097;
+    --line: #2a342d;
+    --flag: #ff7b3a;
+    --flag-ink: #1a0d05;
+    --flag-soft: #3a2014;
+    --good: #5fc086;
+    --bad: #ff8a80;
+
+    color-scheme: dark;
+  }
+}

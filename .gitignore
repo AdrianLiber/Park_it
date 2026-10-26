@@ -1,3 +1,7 @@
 # Firebase's local cache and logs
 .firebase/
 *.log
+
+# Dependencies and build output
+node_modules/
+dist/

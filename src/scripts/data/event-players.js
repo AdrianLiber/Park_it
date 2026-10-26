@@ -1,7 +1,7 @@
 // Player list from https://www.pdga.com/tour/event/97589
 // Drava Forester, Varaždin, 30 Oct – 1 Nov 2026 (54 players).
-// Format: [division, name, PDGA number]
-export const EVENT_PLAYERS = [
+// Each row: [division, name, PDGA number]
+const REGISTRATION_ROWS = [
   ["MPO", "Ari Penttala", "8366"],
   ["MPO", "Jouni Leskinen", "8790"],
   ["MPO", "Haukur Arnar Árnason", "8800"],
@@ -30,7 +30,7 @@ export const EVENT_PLAYERS = [
   ["MPO", "Tomislav Kačavenda", "180388"],
   ["MPO", "Andrej Kozic", "214901"],
   ["MPO", "Andreas Karner", "222139"],
-  ["MPO", "Primož \"Belča\" Belčič", "234773"],
+  ["MPO", 'Primož "Belča" Belčič', "234773"],
   ["MPO", "Dino Harambasic", "238507"],
   ["MPO", "Antonio Grigić", "242179"],
   ["MPO", "Zoran Krečar", "247323"],
@@ -57,3 +57,9 @@ export const EVENT_PLAYERS = [
   ["RAD", "Branimir Mihalinec", "316233"],
   ["RAD", "Sanja Mihalinec", "318293"],
 ];
+
+export const EVENT_PLAYERS = REGISTRATION_ROWS.map(([division, name, pdga]) => ({
+  division,
+  name,
+  pdga,
+}));

@@ -1,0 +1,47 @@
+input,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+input,
+select,
+button,
+summary,
+a {
+  &:focus-visible {
+    outline: 2px solid var(--flag);
+    outline-offset: 2px;
+  }
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-error {
+  color: var(--bad);
+  font-size: 0.9rem;
+  margin: 0;
+}

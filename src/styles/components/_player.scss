@@ -1,0 +1,51 @@
+// Pieces that show a player and their throws, used on both pages.
+@use "../abstracts/breakpoints" as *;
+@use "../abstracts/mixins" as *;
+
+.name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  @include mono-caption;
+}
+
+.throws {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.chip {
+  font: 500 0.9rem/1 var(--mono);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.1rem;
+  text-align: center;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--ground);
+
+  &.miss {
+    border-style: dashed;
+    background: transparent;
+    color: var(--muted);
+  }
+
+  @include at-most(small-phone) {
+    min-width: 2.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+.sum {
+  @include display-number(2.3rem, 0.95);
+
+  @include at-most(small-phone) {
+    font-size: 2rem;
+  }
+}

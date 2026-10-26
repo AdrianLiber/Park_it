@@ -1,0 +1,54 @@
+@use "../abstracts/mixins" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 1rem/1.5 var(--body);
+  padding-left: safe-area(left, 16px);
+  padding-right: safe-area(right, 16px);
+  padding-block: safe-area(top, 24px) safe-area(bottom, 40px);
+}
+
+// One narrow column, like a scorecard. The scorekeeper page is wider.
+.wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &.wide {
+    max-width: 68rem;
+  }
+}
+
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
